@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Art Space</string>
+
+    <!-- https://www.nga.gov/artworks/56670-improvisation-31-sea-battle -->
+    <string name="improvisation_full_title">Improvisation 31 (Sea Battle)</string>
+    <string name="improvisation_artist">Wassily Kandinsky</string>
+    <string name="improvisation_year">1913</string>
+
+    <!-- https://www.nga.gov/artworks/1094-george-washington -->
+    <string name="george_full_title">George Washington</string>
+    <string name="george_artist">Rembrandt Peale</string>
+    <string name="george_year">1850</string>
+
+    <!-- https://www.nga.gov/artworks/60-girl-red-hat -->
+    <string name="girl_full_title">Girl with the Red Hat</string>
+    <string name="girl_artist">Johannes Vermeer</string>
+    <string name="girl_year">1669</string>
 </resources>
