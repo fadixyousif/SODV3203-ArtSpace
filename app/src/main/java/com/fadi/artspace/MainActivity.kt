@@ -37,8 +37,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.fadi.artspace.data.DataSource
-import com.fadi.artspace.model.ArtSpace
+import com.fadi.artspace.data.ArtSpace
+import com.fadi.artspace.data.arts
 import com.fadi.artspace.ui.theme.ArtSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,8 +53,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Function to show the current art image
 @Composable
 fun CreateImage(art: ArtSpace) {
+    // Made box little bit bigger than the current image so it makes it look nicer.
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -76,8 +78,10 @@ fun CreateImage(art: ArtSpace) {
     }
 }
 
+// Function to show the current description of art title and artist name
 @Composable
 fun CreateDescription(art: ArtSpace) {
+    // Made box little bit bigger than the current text so it makes it look nicer.
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -101,7 +105,7 @@ fun CreateDescription(art: ArtSpace) {
                 overflow = TextOverflow.Ellipsis
             )
 
-            Row {
+            Row() {
                 Text(
                     text = stringResource(art.authorId),
                     fontWeight = FontWeight.Bold
@@ -115,11 +119,13 @@ fun CreateDescription(art: ArtSpace) {
     }
 }
 
+// Function to show the buttons
 @Composable
 fun CreateButtons(
     onPrevious: () -> Unit,
     onNext: () -> Unit
 ) {
+    // Row to show the buttons horizontally instead vertical.
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -146,13 +152,16 @@ fun CreateButtons(
     }
 }
 
+// Function to generate
 @Composable
 fun GenerateArtSpace() {
+    // A variable to store current remembered int state
     var currentArtIndex by remember { mutableIntStateOf(0) }
 
-    val arts = DataSource().loadArt()
+    // Get current art info using currentArtIndex index
     val art = arts[currentArtIndex]
 
+    // Column to center it in the middle and put it in the bottom
     Column(
         verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -161,10 +170,15 @@ fun GenerateArtSpace() {
             .fillMaxSize()
 
     ) {
+        // Spacers to put the image in the middle.
         Spacer(modifier = Modifier.weight(1f))
         CreateImage(art)
         Spacer(modifier = Modifier.weight(1f))
+
+        // Create the description section
         CreateDescription(art)
+
+        // Create with params for previous and next buttons
         CreateButtons(
             onPrevious = {
                 if (currentArtIndex > 0) currentArtIndex--
